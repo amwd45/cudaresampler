@@ -1,0 +1,15 @@
+<block>
+  <name>Cudares ff</name>
+  <key>cudaresampler_cudares_ff</key>
+  <category>[CUDARESAMPLER]</category>
+  <import>import cudaresampler</import>
+  <make>cudaresampler.cudares_ff()</make>
+  <sink>
+    <name>in</name>
+    <type>float</type>
+  </sink>
+  <source>
+    <name>out</name>
+    <type>float</type>
+  </source>
+</block>

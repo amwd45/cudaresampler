@@ -1,0 +1,30 @@
+INCLUDE(FindPkgConfig)
+PKG_CHECK_MODULES(PC_CUDARESAMPLER cudaresampler)
+
+FIND_PATH(
+    CUDARESAMPLER_INCLUDE_DIRS
+    NAMES cudaresampler/api.h
+    HINTS $ENV{CUDARESAMPLER_DIR}/include
+        ${PC_CUDARESAMPLER_INCLUDEDIR}
+    PATHS ${CMAKE_INSTALL_PREFIX}/include
+          /usr/local/include
+          /usr/include
+)
+
+FIND_LIBRARY(
+    CUDARESAMPLER_LIBRARIES
+    NAMES gnuradio-cudaresampler
+    HINTS $ENV{CUDARESAMPLER_DIR}/lib
+        ${PC_CUDARESAMPLER_LIBDIR}
+    PATHS ${CMAKE_INSTALL_PREFIX}/lib
+          ${CMAKE_INSTALL_PREFIX}/lib64
+          /usr/local/lib
+          /usr/local/lib64
+          /usr/lib
+          /usr/lib64
+)
+
+INCLUDE(FindPackageHandleStandardArgs)
+FIND_PACKAGE_HANDLE_STANDARD_ARGS(CUDARESAMPLER DEFAULT_MSG CUDARESAMPLER_LIBRARIES CUDARESAMPLER_INCLUDE_DIRS)
+MARK_AS_ADVANCED(CUDARESAMPLER_LIBRARIES CUDARESAMPLER_INCLUDE_DIRS)
+
